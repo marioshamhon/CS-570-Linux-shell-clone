@@ -1,0 +1,21 @@
+I wrote this code myself, but I used the while loop from Foster's recommended inout2.c file as a reference. I also used the while loop from pipe.c on page 6. The one used for reaping child processes I also used the CHK.h macro to do some error checking.  
+I believe everything works perfectly under all conditions, and there are no known bugs.
+
+I also wanted to make note of some design decisions with my version of project four: I decided to check for all the bad syntax commands before a new process is ever created, and if the syntax is fine then  proceed with creating a new process to handle the command, but if the command contains invalid syntax print an error message to the user telling them where they made a mistake and then reissue a prompt for the user to renter their command. The reason I did this was because it didn't make sense to create a new process then exit out of that process because of bad syntax. I felt that it was only right to create a new process when the command was valid. 
+
+Some other things to note about the updated version of p2 (really p4) are when the following cases are found: 
+
+Case 1. "echo hi> |" I have decided to report this as an error so metacharacters cannot be used as output filenames when dealing with output redirection. 
+Case 2. "sort < foo << EoF" Will report as an error because you cannot do two types of input redirection at once. 
+Case 3. "echo hi> &" This will report an error for two reasons. First your trying to use "&" as an output filename, and second "&" is the last word on 
+the commandline that is reversed for running background operations so an error will be reported.
+Case 4. "echo hi> <" I have decided to report this as an error so metacharacters cannot be used as output filenames when dealing with output redirection.
+
+I used this tutorial found here: https://riptutorial.com/c/example/8274/get-lines-from-a-file-using-getline-- to learn how to use fopen and fclose to open and close the passwd file in the username lookup 
+situations.
+
+I used the strstr function in the <string.h> library in username lookup & hereis document situations. I looked at this tutorial https://www.tutorialspoint.com/c_standard_library/c_function_strstr.htm to 
+learn how to use it. 
+
+I used the remove function in the <stdio.h> library to remove the temp file used in hereis doc cases I looked at this tutorial https://www.tutorialspoint.com/c_standard_library/c_function_remove.htm 
+to learn how to use it. 
